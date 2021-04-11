@@ -34,11 +34,20 @@ public class Main {
         double annualRate = readNumber(scanner, "Annual Rate: ", 1, 30);
         int period = (int) readNumber(scanner, "Period: ", 1, 30);
 
+        printMorgage(principal, annualRate, period);
+
+        printPaymentSchedule(principal, annualRate, period);
+
+    }
+
+    public static void printMorgage(double principal, double annualRate, int period) {
         System.out.println("Mortgage");
         System.out.println("________");
         double mortgage = calculateMortgage(principal, annualRate, period);
         System.out.println("Monthly Payments: " + NumberFormat.getCurrencyInstance().format(mortgage));
+    }
 
+    public static void printPaymentSchedule(double principal, double annualRate, int period) {
         System.out.println("Payment Schedule");
         System.out.println("________");
         int periodMonths = calculatePeriodMonths(period);
@@ -46,7 +55,6 @@ public class Main {
             double balance = calculateBalance(principal, annualRate, periodMonths, i);
             System.out.println(NumberFormat.getCurrencyInstance().format(balance));
         }
-
     }
 
     public static double calculateBalance(
