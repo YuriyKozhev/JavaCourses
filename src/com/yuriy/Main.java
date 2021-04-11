@@ -34,8 +34,24 @@ public class Main {
 
         double mortgage = calculateMortgage(principal, annualRate, period);
 
-        System.out.println("Mortgage " + NumberFormat.getCurrencyInstance().format(mortgage));
+        System.out.println("Mortgage");
+        System.out.println("________");
+        System.out.println("Monthly Payments: " + NumberFormat.getCurrencyInstance().format(mortgage));
+
+        System.out.println("Payment Schedule");
+        System.out.println("________");
+
+        double monthlyRate = annualRate / 100 / 12;
+        int periodMonths = period * 12;
+
+        for (int i = 1; i <= periodMonths; i++) {
+            double B = principal * (Math.pow(1 + monthlyRate, periodMonths)
+                    - Math.pow(1 + monthlyRate, i)) / (Math.pow(1 + monthlyRate, periodMonths) - 1);
+            System.out.println(NumberFormat.getCurrencyInstance().format(B));
+        }
     }
+
+//    public static double calculateMonthlyRate()
 
     public static double calculateMortgage(
             double principal,
