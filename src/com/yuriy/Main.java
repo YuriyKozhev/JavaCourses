@@ -8,47 +8,49 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static double readNumber(
+            Scanner scanner,
+            String prompt,
+            double min,
+            double max) {
+        double value;
+
+        while (true) {
+            System.out.print(prompt);
+            value = scanner.nextDouble();
+            if (value >= min && value <= max)
+                break;
+        }
+
+        return value;
+    }
+
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double principal = readNumber(scanner, "Principal (1K-1M): ", 1_000, 1_000_000);
+        double annualRate = readNumber(scanner, "Annual Rate: ", 1, 30);
+        int period = (int) readNumber(scanner, "Period: ", 1, 30);
+
+        double mortgage = calculateMortgage(principal, annualRate, period);
+
+        System.out.println("Mortgage " + NumberFormat.getCurrencyInstance().format(mortgage));
+    }
+
+    public static double calculateMortgage(
+            double principal,
+            double annualRate,
+            int period) {
         final byte MONTH_IN_YEAR = 12;
         final byte PERCENT = 100;
 
-        Scanner scanner = new Scanner(System.in);
-
-        double principal;
-        while (true) {
-            System.out.print("Principal (1K - 1M): ");
-            principal = scanner.nextDouble();
-            if (principal >= 1_000 &&  principal <= 1_000_000)
-                break;
-        }
-
-        double annualRate;
-        while (true) {
-            System.out.print("Annual interest rate: ");
-            annualRate = scanner.nextDouble();
-            if (annualRate > 0 && annualRate < 30)
-                break;
-            else
-                System.out.println("Enter a value between 0 and 30 excluding 0 and 30");
-        }
-
-        int period;
-        while (true) {
-            System.out.print("Period (Years): ");
-            period = scanner.nextInt();
-            if (period > 0 && period < 30)
-                break;
-            else
-                System.out.println("Enter a value between 1 and 30");
-
-        }
         double monthlyRate = annualRate / PERCENT / MONTH_IN_YEAR;
-        double periodMonths = period * MONTH_IN_YEAR;
+        int periodMonths = period * MONTH_IN_YEAR;
 
         double mortgage = principal *
                 monthlyRate * Math.pow(1 + monthlyRate, periodMonths) /
                 (Math.pow(1 + monthlyRate, periodMonths) - 1);
 
-        System.out.println("Mortgage " + NumberFormat.getCurrencyInstance().format(mortgage));
+        return mortgage;
     }
 }
