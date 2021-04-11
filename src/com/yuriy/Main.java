@@ -2,11 +2,15 @@ package com.yuriy;
 
 //import org.apache.commons.lang.SerializationUtils;
 
+import java.text.FieldPosition;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
+
 public class Main {
 
     public static void main(String[] args) {
-        double result = (double) 3 / 2;
-        int intResult = (int) result + Integer.parseInt("2");
-        System.out.println(intResult);
+        NumberFormat percent = NumberFormat.getPercentInstance();
+        String result = percent.format(.891);
+        System.out.println(result);
     }
 }
