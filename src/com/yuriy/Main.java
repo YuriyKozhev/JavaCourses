@@ -4,23 +4,23 @@ package com.yuriy;
 
 
 import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        int number = 14;
+        String[] fruits = { "Apple", "Mango", "Orange" };
 
-        String result = "";
-
-        if (number % 5 == 0) {
-            result += "Fizz";
-        }
-        if (number % 3 == 0) {
-            result += "Buzz";
+        for (int i = 0; i < fruits.length; i++) {
+            System.out.println(fruits[i]);
         }
 
-        result = result == "" ? Integer.toString(number) : result;
-        System.out.println(result);
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+
+        Arrays.stream(fruits).forEach(fruit -> System.out.println(fruit));
+
     }
 }
