@@ -13,15 +13,35 @@ public class Main {
         final byte PERCENT = 100;
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Principal: ");
-        double principal = scanner.nextDouble();
 
-        System.out.print("Annual interest rate: ");
-        double annualRate = scanner.nextDouble();
+        double principal;
+        while (true) {
+            System.out.print("Principal (1K - 1M): ");
+            principal = scanner.nextDouble();
+            if (principal >= 1_000 &&  principal <= 1_000_000)
+                break;
+        }
 
-        System.out.print("Period (Years): ");
-        int period = scanner.nextInt();
+        double annualRate;
+        while (true) {
+            System.out.print("Annual interest rate: ");
+            annualRate = scanner.nextDouble();
+            if (annualRate > 0 && annualRate < 30)
+                break;
+            else
+                System.out.println("Enter a value between 0 and 30 excluding 0 and 30");
+        }
 
+        int period;
+        while (true) {
+            System.out.print("Period (Years): ");
+            period = scanner.nextInt();
+            if (period > 0 && period < 30)
+                break;
+            else
+                System.out.println("Enter a value between 1 and 30");
+
+        }
         double monthlyRate = annualRate / PERCENT / MONTH_IN_YEAR;
         double periodMonths = period * MONTH_IN_YEAR;
 
