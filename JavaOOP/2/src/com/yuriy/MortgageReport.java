@@ -2,7 +2,7 @@ package com.yuriy;
 
 import java.text.NumberFormat;
 
-public class MortageReport {
+public class MortgageReport {
 
     private static final NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
 
