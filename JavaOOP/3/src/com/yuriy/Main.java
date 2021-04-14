@@ -3,15 +3,9 @@ package com.yuriy;
 public class Main {
 
     public static void main(String[] args) {
-        show(new UIControl(true));
-        show(new TextBox());
+        var point1 = new Point(1, 2);
+        var point2 = new Point(1, 2);
+        System.out.println(point1.equals(new Object()));
     }
 
-    public static void show(UIControl uiControl) {
-        if (uiControl instanceof TextBox) {
-            TextBox textBox = (TextBox) uiControl;
-            textBox.setText("Hi");
-        }
-        System.out.println(uiControl);
-    }
 }
