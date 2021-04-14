@@ -1,7 +1,6 @@
 package com.yuriy;
 
-public interface UIWidget {
-    void drag();
-    void resize();
+public interface UIWidget extends Draggable, Resizable {
     void render();
 }
+
