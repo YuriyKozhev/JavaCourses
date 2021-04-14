@@ -1,15 +1,19 @@
 package com.yuriy;
 
 public class TaxReport {
-    private TaxCalculator2018 taxCalculator2018;
+//    private TaxCalculator taxCalculator;
+//
+//    public TaxReport(TaxCalculator taxCalculator) {
+//        this.taxCalculator = taxCalculator;
+//    }
 
-    public TaxReport() {
-        taxCalculator2018 = new TaxCalculator2018(100_000);
-    }
-
-    public void show() {
-        var tax = taxCalculator2018.calculateTax();
+    public void show(TaxCalculator taxCalculator) {
+        var tax = taxCalculator.calculateTax();
         System.out.println(tax);
     }
+
+//    public void setTaxCalculator(TaxCalculator taxCalculator) {
+//        this.taxCalculator = taxCalculator;
+//    }
 
 }
