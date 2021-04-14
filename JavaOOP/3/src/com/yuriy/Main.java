@@ -3,6 +3,8 @@ package com.yuriy;
 public class Main {
 
     public static void main(String[] args) {
-        // write your code here
+        UIControl uiControl = new UIControl();
+        uiControl.disable();
+        System.out.println(uiControl.isEnabled());
     }
 }
