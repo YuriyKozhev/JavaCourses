@@ -8,7 +8,7 @@ public class Main {
 
         MortgageCalculator mortgageCalculator = new MortgageCalculator(principal, annualRate, period);
 
-        MortageReport.printMorgage(mortgageCalculator);
+        MortageReport.printMortgage(mortgageCalculator);
         MortageReport.printPaymentSchedule(mortgageCalculator);
     }
 }

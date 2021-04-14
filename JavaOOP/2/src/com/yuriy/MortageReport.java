@@ -6,7 +6,7 @@ public class MortageReport {
 
     private static final NumberFormat currencyInstance = NumberFormat.getCurrencyInstance();
 
-    public static void printMorgage(MortgageCalculator mortgageCalculator) {
+    public static void printMortgage(MortgageCalculator mortgageCalculator) {
         System.out.println("Mortgage");
         System.out.println("________");
         double mortgage = mortgageCalculator.calculateMortgage();
