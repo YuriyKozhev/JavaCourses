@@ -1,19 +1,24 @@
 package com.yuriy;
 
+import java.text.NumberFormat;
+
 public class MortgageCalculator {
-    final static byte MONTH_IN_YEAR = 12;
-    final static byte PERCENT = 100;
+    private final static byte MONTH_IN_YEAR = 12;
+    private final static byte PERCENT = 100;
 
     private double principal;
     private double annualRate;
     private int period;
     private double monthlyRate;
-
-    public int getPeriodMonths() {
-        return periodMonths;
-    }
-
     private int periodMonths;
+
+    public double[] getRemainingBalances() {
+        double[] balances = new double[periodMonths];
+        for (int month = 1; month <= balances.length; month++) {
+            balances[month - 1] = calculateBalance(month);
+        }
+        return balances;
+    }
 
     public MortgageCalculator(
             double principal,

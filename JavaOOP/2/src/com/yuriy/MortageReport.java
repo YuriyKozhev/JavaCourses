@@ -13,8 +13,7 @@ public class MortageReport {
     public static void printPaymentSchedule(MortgageCalculator mortgageCalculator) {
         System.out.println("Payment Schedule");
         System.out.println("________");
-        for (int i = 1; i <= mortgageCalculator.getPeriodMonths(); i++) {
-            double balance = mortgageCalculator.calculateBalance(i);
+        for (double balance : mortgageCalculator.getRemainingBalances()) {
             System.out.println(NumberFormat.getCurrencyInstance().format(balance));
         }
     }
