@@ -1,16 +1,22 @@
 package com.yuriy;
 
 public class VideoProcessor {
+    private VideoEncoderInterface encoder;
+    private VideoDatabaseInterface database;
+    private EmailServiceInterface emailService;
+
+    public VideoProcessor(
+            VideoEncoderInterface encoder,
+            VideoDatabaseInterface database,
+            EmailServiceInterface emailService) {
+        this.encoder = encoder;
+        this.database = database;
+        this.emailService = emailService;
+    }
 
     public void process (Video video) {
-        var encoder = new VideoEncoder();
         encoder.encode(video);
-
-        var database = new VideoDatabase();
         database.store(video);
-
-        var emailService = new EmailService();
         emailService.sendEmail(video.getUser());
-
     }
 }

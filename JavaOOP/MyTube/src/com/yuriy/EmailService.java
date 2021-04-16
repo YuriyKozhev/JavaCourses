@@ -1,6 +1,7 @@
 package com.yuriy;
 
-public class EmailService {
+public class EmailService implements EmailServiceInterface {
+    @Override
     public void sendEmail(User user) {
 
     }
