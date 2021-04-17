@@ -8,13 +8,21 @@ import java.text.SimpleDateFormat;
 
 public class ExceptionsDemo {
     public static void show() {
-        FileReader reader;
+        FileReader reader = null;
         try {
             reader = new FileReader("file.txt");
             var value = reader.read();
             new SimpleDateFormat().parse("");
         } catch (IOException | ParseException e) {
             System.out.println("Unable to read or parse data");
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
