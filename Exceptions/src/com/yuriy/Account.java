@@ -11,8 +11,9 @@ public class Account {
         }
     }
 
-    public void withdraw(float value) throws InsufficientFundsException {
-        if (deposit < value)
-            throw new InsufficientFundsException();
+    public void withdraw(float value) throws AccountException {
+        if (deposit < value) {
+            throw new AccountException(new InsufficientFundsException());
+        }
     }
 }
