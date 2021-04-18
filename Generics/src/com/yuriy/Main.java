@@ -3,8 +3,9 @@ package com.yuriy;
 public class Main {
 
     public static void main(String[] args) {
-        GenericList<Integer> list = new GenericList<>();
-        list.add(1);
-        System.out.println(list.get(0));
+        User user1 = new User(10);
+        User user2 = new User(20);
+
+        System.out.println(user1.compareTo(user2));
     }
 }
