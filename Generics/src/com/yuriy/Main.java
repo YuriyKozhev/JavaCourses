@@ -6,6 +6,6 @@ public class Main {
         User user1 = new User(10);
         User user2 = new User(20);
 
-        System.out.println(user1.compareTo(user2));
+        System.out.println(Utils.max(user1, user2));
     }
 }
