@@ -1,15 +1,17 @@
 package com.yuriy;
 
+import java.util.List;
+
 public class LambdasDemo {
-    public LambdasDemo(String message) {
-
-    }
-
     public static void show() {
-        greet(LambdasDemo::new);
-    }
+        List<Integer> list = List.of(1, 2, 3);
 
-    public static void greet(Printer printer) {
-        printer.print("Hello World");
+        // Imperative style
+        for (var item: list) {
+            System.out.println(item);
+        }
+
+        // Declarative style
+        list.forEach(System.out::println);
     }
 }
