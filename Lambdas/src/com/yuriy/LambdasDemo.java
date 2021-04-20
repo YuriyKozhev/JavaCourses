@@ -1,8 +1,12 @@
 package com.yuriy;
 
 public class LambdasDemo {
+    public LambdasDemo(String message) {
+
+    }
+
     public static void show() {
-        greet(System.out::println);
+        greet(LambdasDemo::new);
     }
 
     public static void greet(Printer printer) {
