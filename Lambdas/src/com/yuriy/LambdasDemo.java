@@ -7,7 +7,16 @@ import java.util.function.Supplier;
 
 public class LambdasDemo {
     public static void show() {
-        Function<String, Integer> map = str -> str.length();
-        System.out.println(map.apply("you"));
+        // "key:value" -> "key=value" -> "{key=value}"
+        Function<String, String> replaceColon = str -> str.replace(':','=');
+        Function<String, String> addBraces = str -> "{" + str + "}";
+
+        System.out.println(replaceColon
+                .andThen(addBraces)
+                .apply("key:value"));
+
+        System.out.println(addBraces
+                .compose(replaceColon)
+                .apply("key:value"));
     }
 }
