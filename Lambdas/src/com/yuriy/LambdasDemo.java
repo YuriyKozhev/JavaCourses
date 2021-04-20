@@ -2,13 +2,12 @@ package com.yuriy;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class LambdasDemo {
     public static void show() {
-        List<String> list = List.of("a", "b", "c");
-        Consumer<String> print = item -> System.out.println(item);
-        Consumer<String> printUpperCase = item -> System.out.println(item.toUpperCase());
-
-        list.forEach(print.andThen(printUpperCase));
+        Function<String, Integer> map = str -> str.length();
+        System.out.println(map.apply("you"));
     }
 }
