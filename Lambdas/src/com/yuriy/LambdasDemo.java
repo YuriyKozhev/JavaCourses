@@ -1,17 +1,17 @@
 package com.yuriy;
 
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class LambdasDemo {
     public static void show() {
-        Predicate<String> hasLeftBrace = str -> str.startsWith("{");
-        Predicate<String> hasRightBrace = str -> str.endsWith("}");
+        BinaryOperator<Integer> add = (a, b) -> a + b;
+        System.out.println(add.apply(1, 2));
 
-        var hasLeftAndRightBraces = hasLeftBrace.and(hasRightBrace);
-        System.out.println(hasLeftAndRightBraces.test("{d}"));
+        IntBinaryOperator add2 = Integer::sum;
+        System.out.println(add2.applyAsInt(1, 2));
+
+        Function<Integer, Integer> square = a -> a * a;
+        System.out.println(square.apply(add2.applyAsInt(1, 2)));
     }
 }
