@@ -8,13 +8,14 @@ import java.util.stream.Stream;
 
 public class StreamsDemo {
     public static void show() {
-        Stream.iterate(2, n -> n * n)
-                .limit(6)
-                .forEach(System.out::println);
+        List<Movie> movies = List.of(
+                new Movie("a", 10),
+                new Movie("b", 15),
+                new Movie("c", 20)
+        );
 
-        Stream.iterate(2L, n -> n * n)
-                .limit(6)
+        movies.stream()
+                .map(movie -> movie.getTitle())
                 .forEach(System.out::println);
-
     }
 }
