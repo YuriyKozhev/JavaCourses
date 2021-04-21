@@ -8,9 +8,8 @@ import java.util.stream.Stream;
 
 public class StreamsDemo {
     public static void show() {
-        int[] numbers = { 1, 2, 3};
-        Arrays.stream(numbers)
-                .forEach(num -> System.out.println(num));
-
+        Stream.generate(() -> Math.random())
+                .limit(10)
+                .forEach(System.out::println);
     }
 }
