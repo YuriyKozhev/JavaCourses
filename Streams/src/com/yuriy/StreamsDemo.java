@@ -8,8 +8,13 @@ import java.util.stream.Stream;
 
 public class StreamsDemo {
     public static void show() {
-        Stream.generate(() -> Math.random())
-                .limit(10)
+        Stream.iterate(2, n -> n * n)
+                .limit(6)
                 .forEach(System.out::println);
+
+        Stream.iterate(2L, n -> n * n)
+                .limit(6)
+                .forEach(System.out::println);
+
     }
 }
