@@ -12,13 +12,13 @@ public class StreamsDemo {
         var movies = List.of(
                 new Movie("a", 20),
                 new Movie("b",15),
-                new Movie("c",10)
+                new Movie("c",25)
         );
 
         Predicate<Movie> isPopular = movie -> movie.getLikes() > 10;
 
         movies.stream()
-                .filter(isPopular)
+                .takeWhile(movie -> movie.getLikes() > 15)
                 .forEach(movie -> System.out.println(movie.getTitle()));
     }
 }
