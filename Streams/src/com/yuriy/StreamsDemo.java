@@ -4,13 +4,21 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class StreamsDemo {
     public static void show() {
-        var stream = Stream.of(List.of(1, 2, 3), List.of(4, 5, 6));
-        stream
-                .flatMap(list -> list.stream())
-                .forEach(System.out::println);
+        var movies = List.of(
+                new Movie("a", 20),
+                new Movie("b",15),
+                new Movie("c",10)
+        );
+
+        Predicate<Movie> isPopular = movie -> movie.getLikes() > 10;
+
+        movies.stream()
+                .filter(isPopular)
+                .forEach(movie -> System.out.println(movie.getTitle()));
     }
 }
