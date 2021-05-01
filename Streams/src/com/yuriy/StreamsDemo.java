@@ -13,10 +13,11 @@ public class StreamsDemo {
                 new Movie("a",15, Genre.COMEDY)
         );
 
-        Map<Genre, List<Movie>> map = movies.stream()
-                .collect(Collectors.groupingBy(Movie::getGenre));
+        Map<Boolean, String> map = movies.stream()
+                .collect(Collectors.partitioningBy(movie -> movie.getLikes() > 15,
+                        Collectors.mapping(Movie::getTitle,
+                                Collectors.joining(", "))));
 
         System.out.println(map);
-
     }
 }
