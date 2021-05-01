@@ -13,11 +13,12 @@ public class StreamsDemo {
         var movies = List.of(
                 new Movie("b", 20),
                 new Movie("a",15),
-                new Movie("c",25)
+                new Movie("c",25),
+                new Movie("a",15)
         );
 
         movies.stream()
-                .sorted(Comparator.comparing(Movie::getTitle).reversed())
-                .forEach(movie -> System.out.println(movie.getTitle()));
+                .distinct()
+                .forEach(System.out::println);
     }
 }
