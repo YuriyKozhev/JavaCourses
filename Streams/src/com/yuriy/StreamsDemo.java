@@ -18,9 +18,9 @@ public class StreamsDemo {
         );
 
         movies.stream()
-                .filter(movie -> movie.getLikes() > 15)
-                .peek(movie -> System.out.println("filtered " + movie))
-                .map(Movie::getTitle)
-                .forEach(System.out::println);
+                .map(Movie::getLikes)
+                .reduce((m1, m2) -> m1 + m2)
+                .ifPresent(System.out::println);
+
     }
 }
