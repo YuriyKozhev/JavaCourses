@@ -1,7 +1,7 @@
 package com.yuriy;
 
 public class DownloadFileTask implements Runnable {
-    private DownloadStatus downloadStatus;
+    private final DownloadStatus downloadStatus;
 
     public DownloadFileTask(DownloadStatus downloadStatus) {
         this.downloadStatus = downloadStatus;
