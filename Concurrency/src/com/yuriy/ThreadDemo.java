@@ -10,22 +10,16 @@ public class ThreadDemo {
 
         ArrayList<Thread> threads = new ArrayList<>(10);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
             Thread thread = new Thread(new DownloadFileTask(downloadStatus));
             thread.start();
             threads.add(thread);
         }
 
-        for (var thread:
-             threads) {
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        System.out.println(downloadStatus.getTotalBytes());
+        new Thread(() -> {
+           while (!downloadStatus.isDone()) {};
+           System.out.println("Downloading is done");
+        }).start();
 
     }
 }

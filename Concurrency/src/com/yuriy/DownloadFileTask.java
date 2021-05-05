@@ -11,14 +11,14 @@ public class DownloadFileTask implements Runnable {
     public void run() {
         System.out.println("Started downloading a file in thread: " + Thread.currentThread().getName());
 
-        for (int i = 0; i < 10_000; i++) {
+        for (int i = 0; i < 100_000; i++) {
             if (Thread.currentThread().isInterrupted()) {
                 System.out.println("Downloading is cancelled");
                 return;
             }
             downloadStatus.incrementTotalBytes();
         }
-
+        downloadStatus.done();
         System.out.println("Download complete in thread: " + Thread.currentThread().getName());
     }
 }
