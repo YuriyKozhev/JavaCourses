@@ -1,7 +1,7 @@
 package com.yuriy;
 
 public class DownloadFileTask implements Runnable {
-    private DownloadStatus downloadStatus;
+    private final DownloadStatus downloadStatus;
 
     public DownloadFileTask(DownloadStatus downloadStatus) {
         this.downloadStatus = downloadStatus;
@@ -18,7 +18,10 @@ public class DownloadFileTask implements Runnable {
             }
             downloadStatus.incrementTotalBytes();
         }
-        downloadStatus.done();
         System.out.println("Download complete in thread: " + Thread.currentThread().getName());
+        downloadStatus.done();
+        synchronized (downloadStatus) {
+            downloadStatus.notifyAll();
+        }
     }
 }

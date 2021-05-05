@@ -17,7 +17,15 @@ public class ThreadDemo {
         }
 
         new Thread(() -> {
-           while (!downloadStatus.isDone()) {};
+           if (!downloadStatus.isDone()) {
+               synchronized (downloadStatus) {
+                   try {
+                       downloadStatus.wait();
+                   } catch (InterruptedException e) {
+                       e.printStackTrace();
+                   }
+               }
+           }
            System.out.println("Downloading is done");
         }).start();
 
