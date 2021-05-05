@@ -3,10 +3,12 @@ package com.yuriy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 public class ThreadDemo {
     public static void show() {
-        Collection<Integer> collection = new ArrayList<>();
+        Collection<Integer> collection =
+                Collections.synchronizedCollection(new ArrayList<>());
 
         var thread1 = new Thread(() -> {
             collection.addAll(Arrays.asList(1, 2));
