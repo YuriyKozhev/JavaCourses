@@ -8,5 +8,6 @@ public class ExecutorsDemo {
         executor.submit(() -> {
             System.out.println(Thread.currentThread().getName());
         });
+        executor.shutdown();
     }
 }
