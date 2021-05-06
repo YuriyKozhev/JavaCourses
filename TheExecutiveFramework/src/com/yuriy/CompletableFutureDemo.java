@@ -6,11 +6,15 @@ import java.util.function.Supplier;
 
 public class CompletableFutureDemo {
     public static void show() {
-        Supplier<Integer> supplier = () -> 1;
-        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(supplier);
+        var future = CompletableFuture.supplyAsync(() -> 1);
+        future.thenAcceptAsync((result) -> {
+            System.out.println(Thread.currentThread().getName());
+            System.out.println("Done " + result);
+        });
+
         try {
-            System.out.println(future.get());
-        } catch (InterruptedException | ExecutionException e) {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
