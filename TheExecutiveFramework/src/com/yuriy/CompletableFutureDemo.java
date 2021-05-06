@@ -6,16 +6,17 @@ import java.util.function.Supplier;
 
 public class CompletableFutureDemo {
     public static void show() {
-        var future = CompletableFuture.supplyAsync(() -> 1);
-        future.thenAcceptAsync((result) -> {
-            System.out.println(Thread.currentThread().getName());
-            System.out.println("Done " + result);
+        var future = CompletableFuture.supplyAsync(() -> {
+            System.out.println("Getting the data...");
+            throw new IllegalStateException();
         });
 
         try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
+            var result = future.exceptionally(ex -> 1).get();
+            System.out.println(result);
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
+
     }
 }
