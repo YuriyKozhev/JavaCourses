@@ -1,12 +1,13 @@
 package com.yuriy;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class QuoteAggregator {
-    private String[] sites;
+    private List<String> sites;
 
-    public QuoteAggregator(String[] sites) {
+    public QuoteAggregator(List<String> sites) {
         this.sites = sites;
     }
 
