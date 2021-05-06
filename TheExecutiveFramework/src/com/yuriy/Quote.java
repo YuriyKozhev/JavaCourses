@@ -8,4 +8,12 @@ public class Quote {
         this.site = site;
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Quote{" +
+                "site='" + site + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
