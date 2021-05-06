@@ -1,14 +1,24 @@
 package com.yuriy;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class CompletableFutureDemo {
     public static void show() {
-        var first = CompletableFuture.supplyAsync(() -> "20USD")
-                .thenApply(str -> Integer.parseInt(str.replace("USD", "")));
-        var second = CompletableFuture.supplyAsync(() -> 0.9);
+        var first = CompletableFuture.supplyAsync(() -> 1);
+        var second = CompletableFuture.supplyAsync(() -> 2);
+        var third = CompletableFuture.supplyAsync(() -> 3);
 
-        first.thenCombine(second, (price, exchangeRate) -> price * exchangeRate)
-                .thenAccept(System.out::println);
+        var all = CompletableFuture.allOf(first, second, third);
+
+        all.thenRun(() -> {
+            System.out.println("All tasks are completed");
+            try {
+                var firstResult = first.get();
+                System.out.println(firstResult);
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
